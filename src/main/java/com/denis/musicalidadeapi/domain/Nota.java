@@ -1,5 +1,6 @@
 package com.denis.musicalidadeapi.domain;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 public enum Nota {
     C("C"),
     C_SHARP("C#"),
@@ -19,7 +20,7 @@ public enum Nota {
     Nota(String simbolo) {
         this.simbolo = simbolo;
     }
-
+    @JsonValue
     public String getSimbolo() {
         return simbolo;
     }
