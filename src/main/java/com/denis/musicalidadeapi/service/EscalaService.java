@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Service
 public class EscalaService {
 
@@ -13,16 +12,14 @@ public class EscalaService {
 
     public List<Nota> gerarEscalaMaior(Nota notaBase) {
         List<Nota> escala = new ArrayList<>();
+        Nota[] todasNotas = Nota.values();
 
         escala.add(notaBase);
 
-        int indiceAtual = notaBase.ordinal(); // Pega o número da nota (Ex: C é 0)
-        Nota[] todasNotas = Nota.values();    // Pega todas as 12 notas
+        int indiceAtual = notaBase.ordinal() ;
 
-        for (int intervalo : INTERVALOS_MAIOR) {
-            indiceAtual += intervalo;
-
-            indiceAtual = indiceAtual % 12;
+        for (int i = 0; i < 6; i++) {
+            indiceAtual = (indiceAtual + INTERVALOS_MAIOR[i]) % 12;
 
             escala.add(todasNotas[indiceAtual]);
         }
